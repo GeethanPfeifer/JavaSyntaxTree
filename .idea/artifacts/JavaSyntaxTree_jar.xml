@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="JavaSyntaxTree:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/JavaSyntaxTree_jar</output-path>
+    <root id="archive" name="JavaSyntaxTree.jar">
+      <element id="module-output" name="JavaSyntaxTree" />
+    </root>
+  </artifact>
+</component>
