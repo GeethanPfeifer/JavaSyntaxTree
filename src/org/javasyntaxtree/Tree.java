@@ -241,6 +241,16 @@ public class Tree {
 
         }
 
+        /* Accounting for whitespace at end of string */
+        for(; ds.empty() && i < tokens.size(); i++) {
+            if(tokens.get(i).getFunction().equals("right-bracket")) {
+                throw new Exception("Brackets not matched correctly.");
+            } else if(!tokens.get(i).getFunction().equals("whitespace")) {
+                throw new Exception("Unexpected token.");
+            }
+        }
+
+
         if(ds.empty() && i == tokens.size()) {      /* success! all is well. replacing label names with ints in arcs, and return */
             for(i = 0; i<arrows.size(); i++) {
                 arrows.get(i).updateArc(labels);
