@@ -104,6 +104,19 @@ public class Tree {
             labels.put(tokens.get(i).getText(), 0);
             if(!slbf) {
                 i++;
+
+                /*
+                See:
+                https://docs.oracle.com/javase/specs/jls/se7/html/jls-15.html */
+                /* for(; i < tokens.size() && tokens.get(i).getFunction().equals("whitespace") ; i++){} */
+
+                while(i < tokens.size()) {
+                    if(!tokens.get(i).getFunction().equals("whitespace")) {
+                        break;
+                    }
+                    i++;
+                }
+
                 if(i != tokens.size()) {
                     throw new Exception("Multiple Expressions.");
                 } else {
@@ -113,8 +126,19 @@ public class Tree {
             /* next token */
             i++;
         } else if(!slbf) {
+            nodes.add(new Node(0, null, 0, tx));
+            while(i < tokens.size()) {
+                if(!tokens.get(i).getFunction().equals("whitespace")) {
+                    break;
+                }
+                i++;
+            }
             /* invalid */
-            throw new Exception("Multiple expressions.");
+            if(i != tokens.size()) {
+                throw new Exception("Multiple expressions.");
+            } else {
+                return;
+            }
         } else {
             /* make boring node */
             nodes.add(new Node(0, null, 0, tx));
