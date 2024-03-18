@@ -56,7 +56,7 @@ public class ImageWindow extends JFrame {
         frame.setJMenuBar(mb);
 
         /* Thanks to https://stackoverflow.com/a/9215300 */
-        frame.getContentPane().add(new JLabel(new ImageIcon(image)));
+        frame.getContentPane().add(new JScrollPane(new JLabel(new ImageIcon(image))));
         frame.pack();
 
         frame.setVisible(true);
